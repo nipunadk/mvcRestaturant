@@ -25,7 +25,8 @@ namespace GreenRestaturant.Controllers
                                Name = r.Name,
                                City = r.City,
                                Country = r.Country,
-                               CountOfReviews = r.Reviews.Count()
+                               CountOfReviews = r.Reviews.Count(),
+                               Reviews = r.Reviews
                            });
 
             return View(model);

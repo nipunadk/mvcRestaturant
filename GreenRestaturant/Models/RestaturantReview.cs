@@ -11,6 +11,7 @@ namespace GreenRestaturant.Models
         public int Rating { get; set; }
         public string Body { get; set; }
         public int RestaturantId { get; set; }
+      
 
     }
 }
