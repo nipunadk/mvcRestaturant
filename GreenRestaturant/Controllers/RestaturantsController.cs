@@ -26,9 +26,12 @@ namespace GreenRestaturant.Controllers
         {
             if (id == null)
             {
+               // return View("NotFound");
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Restaturant restaturant = await db.Restaturants.FindAsync(id);
+
             if (restaturant == null)
             {
                 return HttpNotFound();
