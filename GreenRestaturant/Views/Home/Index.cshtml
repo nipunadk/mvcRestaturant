@@ -1,4 +1,4 @@
-﻿@model   IEnumerable<GreenRestaturant.Models.RestaturantListviewModel>
+﻿@model  IEnumerable<GreenRestaturant.Models.RestaturantListviewModel>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -22,26 +22,24 @@
             <h4>  @item.Name</h4>
             <div> @item.City  , @item.Country </div>
         </div>
+
         <table>
             @foreach (var review in @item.Reviews)
             {
                 <tr>
 
                     <td>
-                        &nbsp; COMMENT : @Html.DisplayFor(modelItem => review.Body)
+                        &nbsp; USER COMMENT : @Html.DisplayFor(modelItem => review.Body)
                     </td>
                     <td>
-                        &nbsp; RATING : (@Html.DisplayFor(modelItem => review.Rating))
+                        &nbsp; || &nbsp; USER RATING : (@Html.DisplayFor(modelItem => review.Rating) / 5)
                     </td>
-
                 </tr>
-
             }
-                <tr>
-                     Total Reviews : ( @item.CountOfReviews )
-                </tr>
-
         </table>
+        <div>
+            Total Reviews : ( @item.CountOfReviews )
+        </div>
         <hr />
     }
 
