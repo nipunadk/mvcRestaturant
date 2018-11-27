@@ -11,7 +11,7 @@ namespace GreenRestaturant.Models
         public string Name { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public ICollection<RestaturantReview> Reviews { get; set; }
+        public virtual ICollection<RestaturantReview> Reviews { get; set; }
 
     }
 }

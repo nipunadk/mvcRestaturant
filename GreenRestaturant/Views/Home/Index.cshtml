@@ -1,21 +1,47 @@
-﻿@model   IEnumerable<GreenRestaturant.Models.RestaturantListviewModel>
+﻿@model  IEnumerable<GreenRestaturant.Models.RestaturantListviewModel>
 @{
     ViewBag.Title = "Home Page";
 }
 
-<form method="get">
-    <input type="search" name="searchTerm" />
-    <input type="submit"  value="Search By Name" />
 
-</form>
+<div>
+    <form method="get">
+        <input type="search" name="searchTerm" />
+        <input type="submit" value="Search By Name" />
 
-@foreach(var item in Model)
-{
-    <div>
-        <h4>  @item.Name</h4>
-        <div> @item.City  , @item.Country </div>
-        @*<div> @item.Review </div>*@
-        <div> Review : @item.CountOfReviews</div>
+    </form>
+</div>
+
+
+<div>
+
+
+    @foreach (var item in Model)
+    {
+        <div>
+            <h4>  @item.Name</h4>
+            <div> @item.City  , @item.Country </div>
+        </div>
+
+        <table>
+            @foreach (var review in @item.Reviews)
+            {
+                <tr>
+
+                    <td>
+                        &nbsp; USER COMMENT : @Html.DisplayFor(modelItem => review.Body)
+                    </td>
+                    <td>
+                        &nbsp; || &nbsp; USER RATING : (@Html.DisplayFor(modelItem => review.Rating) / 5)
+                    </td>
+                </tr>
+            }
+        </table>
+        <div>
+            Total Reviews : ( @item.CountOfReviews )
+        </div>
         <hr />
-    </div>
-}
+    }
+
+</div>
+

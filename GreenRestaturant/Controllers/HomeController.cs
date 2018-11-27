@@ -16,7 +16,8 @@ namespace GreenRestaturant.Controllers
         {
 
             var model = _db.Restaturants
-                           .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
+                           .OrderBy(r=> r.Name)
+                           //.OrderByDescending(r => r.Reviews.Average(review => review.Rating))
                            .Where(r => searchTerm == null || r.Name.StartsWith(searchTerm))
                            .Take(10)
                            .Select( r=> new RestaturantListviewModel
@@ -25,7 +26,8 @@ namespace GreenRestaturant.Controllers
                                Name = r.Name,
                                City = r.City,
                                Country = r.Country,
-                               CountOfReviews = r.Reviews.Count()
+                               CountOfReviews = r.Reviews.Count(),
+                               Reviews = r.Reviews
                            });
 
             return View(model);
